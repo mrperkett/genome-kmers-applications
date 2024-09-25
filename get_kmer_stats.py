@@ -18,13 +18,9 @@ from scipy import sparse
 def existing_file_path(file_path_str):
     file_path = Path(file_path_str)
     if file_path.is_file():
-        return file_path
+        return file_path_str
     else:
         raise ValueError(f"file path does not exist: '{file_path_str}'")
-
-
-def file_path(file_path_str):
-    return Path(file_path_str)
 
 
 def parse_args():
@@ -43,7 +39,7 @@ def parse_args():
         "--output",
         "-o",
         dest="output_file_path",
-        type=file_path,
+        type=str,
         required=True,
         help="analysis output file path (shelve .db file)",
     )
